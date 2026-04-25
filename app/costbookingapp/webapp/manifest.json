@@ -118,6 +118,24 @@
                                                 "navigateToInstance": true
                                             }
                                         }
+                                    },
+                                    "columns": {
+                                        "DataField::srnId": {
+                                            "availability": "Hidden"
+                                        },
+                                        "CustomSrnLink": {
+                                            "header": "SRN ID",
+                                            "position": {
+                                                "placement": "After",
+                                                "anchor": "DataField::departmentGroup"
+                                            },
+                                            "template": "esp.costbooking.costbookingapp.ext.SrnIdLink",
+                                            "availability": "Default",
+                                            "properties": [
+                                                "srnId"
+                                            ],
+                                            "importance": "High"
+                                        }
                                     }
                                 }
                             },
@@ -162,6 +180,20 @@
                                     "controllerExtensions": [
                                         "esp.costbooking.costbookingapp.ext.ExternalLinkHandler"
                                     ]
+                                }
+                            },
+                            "showNavigationButton": true,
+                            "controllerName": "esp.costbooking.costbookingapp.ext.ObjectPageExt",
+                            "content": {
+                                "header": {
+                                    "actions": {
+                                        "backToList": {
+                                            "press": ".extension.esp.costbooking.costbookingapp.ext.ObjectPageExt.onBackToList",
+                                            "text": "\u2190 Back to List",
+                                            "visible": true,
+                                            "enabled": true
+                                        }
+                                    }
                                 }
                             }
                         }

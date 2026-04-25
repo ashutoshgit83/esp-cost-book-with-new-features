@@ -1,6 +1,8 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
-    <Link text="{srnId}"
-          href="https://enrico-digital.bosch.tech/sowjd-srn"
-          target="_blank"
-          class="sapUiTinyMargin" />
+    <Link
+        text="{srnId}"
+        href="https://enrico-digital.bosch.tech/sowjd-srn"
+        target="_blank"
+        visible="{= !!${srnId}}"
+    />
 </core:FragmentDefinition>

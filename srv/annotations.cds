@@ -245,7 +245,7 @@ annotate service.CostBookings with @(
     { Value: empStatus,               Position: 80 },
     { Value: annualRate,              Position: 90 },
     { Value: annualRateEuro,          Position: 100 },
-    { $Type: 'UI.DataFieldWithUrl', Value: srnId, Url: 'https://enrico-digital.bosch.tech/sowjd-srn', Position: 45, ![@UI.Importance]: #High },
+    { Value: srnId, Position: 45, ![@UI.Importance]: #High },
     { Value: vendorName,              Position: 120 },
     { Value: poNumber,                Position: 130 },
     { Value: srnValue,                Position: 140 },
