@@ -1,0 +1,80 @@
+{
+    "name": "esp-cost-booking",
+    "version": "1.0.0",
+    "description": "CAP project: esp-cost-booking",
+    "scripts": {
+        "start": "cds-serve",
+        "build": "cds build",
+        "watch": "cds watch --with-mocks --in-memory",
+        "deploy": "cds deploy",
+        "test": "npm run jest",
+        "jest": "jest",
+        "postinstall": "patch-package",
+        "cds-urlify": "node ../../scripts/urlify.js",
+        "generate-fiori": "node ../../fiori_cli_tool/headless.mjs ../../fiori_cli_tool/headless.json",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "format": "prettier --write .",
+        "watch-costbookingapp": "cds watch --open esp.costbooking.costbookingapp/index.html?sap-ui-xx-viewCache=false --livereload false",
+        "deploy:hana": "cds deploy --to hana --profile hybrid",
+        "watch:hybrid": "cds watch --profile hybrid"
+    },
+    "dependencies": {
+        "@cap-js/sqlite": "^1.11.1",
+        "@sap-cloud-sdk/connectivity": "^3.x",
+        "@sap-cloud-sdk/http-client": "^3.x",
+        "@sap-cloud-sdk/resilience": "^3.x",
+        "@sap-cloud-sdk/util": "^3.x",
+        "@sap/cds": "^8.9.9",
+        "express": "^4.22.1",
+        "@sap/cds-hana": "^2"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.x",
+        "eslint": "^8.x",
+        "jest": "^29.x",
+        "newman": "^6.x",
+        "nodemon": "^3.x",
+        "patch-package": "^8.x",
+        "prettier": "^3.x",
+        "cds-plugin-ui5": "^0.13.0"
+    },
+    "cds": {
+        "requires": {
+            "db": {
+                "kind": "sql",
+                "[development]": {
+                    "kind": "sqlite",
+                    "impl": "@cap-js/sqlite",
+                    "credentials": {
+                        "url": ":memory:"
+                    }
+                },
+                "[production]": {
+                    "kind": "hana",
+                    "impl": "@sap/cds-hana"
+                },
+                "[hybrid]": {
+                    "kind": "hana",
+                    "impl": "@sap/cds-hana"
+                }
+            },
+            "[production]": {
+                "auth": {
+                    "kind": "xsuaa"
+                }
+            },
+            "[hybrid]": {
+                "auth": {
+                    "kind": "dummy"
+                }
+            }
+        }
+    },
+    "workspaces": [
+        "app/*"
+    ],
+    "sapux": [
+        "app/costbookingapp"
+    ]
+}

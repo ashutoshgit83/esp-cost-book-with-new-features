@@ -1,0 +1,1 @@
+using CostBookingService as service from '../../srv/service';

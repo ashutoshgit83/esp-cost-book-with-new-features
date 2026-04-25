@@ -1,0 +1,182 @@
+{
+    "_version": "1.83.0",
+    "sap.app": {
+        "id": "esp.costbooking.costbookingapp",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:lrop",
+            "version": "1.22.0",
+            "toolsId": "bbc242bc-42b0-417d-bf09-00803225f4c4"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "../odata/v4/cost-booking/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "odataVersion": "4.01"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.147.1",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.fe.templates": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "esp.costbooking.costbookingapp.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "config": {},
+            "routes": [
+                {
+                    "pattern": ":?query:",
+                    "name": "CostBookingsList",
+                    "target": "CostBookingsList"
+                },
+                {
+                    "pattern": "CostBookings({key}):?query:",
+                    "name": "CostBookingsObjectPage",
+                    "target": "CostBookingsObjectPage"
+                }
+            ],
+            "targets": {
+                "CostBookingsList": {
+                    "type": "Component",
+                    "id": "CostBookingsList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings": {
+                            "contextPath": "/CostBookings",
+                            "variantManagement": "Page",
+                            "navigation": {
+                                "CostBookings": {
+                                    "detail": {
+                                        "route": "CostBookingsObjectPage"
+                                    }
+                                }
+                            },
+                            "controlConfiguration": {
+                                "@com.sap.vocabularies.UI.v1.LineItem": {
+                                    "actions": {
+                                        "CostBookingService.copyBooking": {
+                                            "afterExecution": {
+                                                "navigateToInstance": true
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "initialLoad": "Enabled",
+                            "controllerExtensions": {
+                                "sap.fe.templates.ListReport.ListReportController": {
+                                    "controllerExtensions": [
+                                        "esp.costbooking.costbookingapp.ext.ExternalLinkHandler"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "CostBookingsObjectPage": {
+                    "type": "Component",
+                    "id": "CostBookingsObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "editableHeaderContent": false,
+                            "contextPath": "/CostBookings",
+                            "controlConfiguration": {
+                                "@com.sap.vocabularies.UI.v1.FieldGroup#SRN": {
+                                    "fields": {
+                                        "CustomSrnIdField": {
+                                            "label": "SRN ID",
+                                            "position": {
+                                                "placement": "Before",
+                                                "anchor": "DataField::srnId"
+                                            },
+                                            "template": "esp.costbooking.costbookingapp.ext.SrnIdField"
+                                        },
+                                        "DataField::srnId": {
+                                            "availability": "Hidden"
+                                        }
+                                    }
+                                }
+                            },
+                            "controllerExtensions": {
+                                "sap.fe.templates.ObjectPage.ObjectPageController": {
+                                    "controllerExtensions": [
+                                        "esp.costbooking.costbookingapp.ext.ExternalLinkHandler"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "transactional"
+    },
+    "sap.fe": {
+        "app": {
+            "enableLazyLoading": true
+        }
+    }
+}

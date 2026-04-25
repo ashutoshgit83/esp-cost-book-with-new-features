@@ -1,0 +1,28 @@
+{
+  "generationParameters": {
+    "generationDate": "Fri Apr 24 2026 11:24:49 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "CLI",
+    "serviceType": "Local CAP",
+    "metadataFilename": "",
+    "serviceUrl": "http://localhost:4004/odata/v4/cost-booking/",
+    "appName": "costbookingapp",
+    "appTitle": "ESP Associate Cost Booking",
+    "appDescription": "ESP External Service Provider Associate Cost Booking Application",
+    "appNamespace": "esp.costbooking",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.147.1",
+    "enableEslint": true,
+    "enableTypeScript": false,
+    "showMockDataInfo": false,
+    "generatorVersion": "1.22.0",
+    "template": "List Report Page V4",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "CostBookings"
+      }
+    ],
+    "launchText": "To launch the generated app, start your CAP project:  and navigate to the following location in your browser:\n\nhttp://localhost:4004/costbookingapp/webapp/index.html"
+  }
+}

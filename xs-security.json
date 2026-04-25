@@ -1,0 +1,161 @@
+{
+  "xsappname": "esp-cost-booking",
+  "tenant-mode": "dedicated",
+  "description": "ESP Associate Cost Booking Application",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.Admin",
+      "description": "Full administrative access"
+    },
+    {
+      "name": "$XSAPPNAME.ChapterLeadUser",
+      "description": "Chapter Lead - can only see own chapter data"
+    }
+  ],
+  "attributes": [
+    {
+      "name": "chapterLead",
+      "description": "Chapter Lead Name",
+      "valueType": "string",
+      "valueRequired": true
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "Admin",
+      "description": "Administrator with full access to all cost bookings",
+      "scope-references": [
+        "$XSAPPNAME.Admin"
+      ]
+    },
+    {
+      "name": "ChapterLeadAshutosh",
+      "description": "Chapter Lead Ashutosh - sees only Ashutosh data",
+      "scope-references": [
+        "$XSAPPNAME.ChapterLeadUser"
+      ],
+      "attribute-references": [
+        {
+          "name": "chapterLead",
+          "default-values": ["Ashutosh"]
+        }
+      ]
+    },
+    {
+      "name": "ChapterLeadGobi",
+      "description": "Chapter Lead Gobi - sees only Gobi data",
+      "scope-references": [
+        "$XSAPPNAME.ChapterLeadUser"
+      ],
+      "attribute-references": [
+        {
+          "name": "chapterLead",
+          "default-values": ["Gobi"]
+        }
+      ]
+    },
+    {
+      "name": "ChapterLeadDamo",
+      "description": "Chapter Lead Damo - sees only Damo data",
+      "scope-references": [
+        "$XSAPPNAME.ChapterLeadUser"
+      ],
+      "attribute-references": [
+        {
+          "name": "chapterLead",
+          "default-values": ["Damo"]
+        }
+      ]
+    },
+    {
+      "name": "ChapterLeadBalaji",
+      "description": "Chapter Lead Balaji - sees only Balaji data",
+      "scope-references": [
+        "$XSAPPNAME.ChapterLeadUser"
+      ],
+      "attribute-references": [
+        {
+          "name": "chapterLead",
+          "default-values": ["Balaji"]
+        }
+      ]
+    },
+    {
+      "name": "ChapterLeadJyothsna",
+      "description": "Chapter Lead Jyothsna - sees only Jyothsna data",
+      "scope-references": [
+        "$XSAPPNAME.ChapterLeadUser"
+      ],
+      "attribute-references": [
+        {
+          "name": "chapterLead",
+          "default-values": ["Jyothsna"]
+        }
+      ]
+    },
+    {
+      "name": "ChapterLeadSasi",
+      "description": "Chapter Lead Sasi - sees only Sasi data",
+      "scope-references": [
+        "$XSAPPNAME.ChapterLeadUser"
+      ],
+      "attribute-references": [
+        {
+          "name": "chapterLead",
+          "default-values": ["Sasi"]
+        }
+      ]
+    }
+  ],
+  "role-collections": [
+    {
+      "name": "ESP_Admin",
+      "description": "ESP Cost Booking Administrator",
+      "role-template-references": [
+        "$XSAPPNAME.Admin"
+      ]
+    },
+    {
+      "name": "ESP_ChapterLead_Ashutosh",
+      "description": "Chapter Lead Ashutosh",
+      "role-template-references": [
+        "$XSAPPNAME.ChapterLeadAshutosh"
+      ]
+    },
+    {
+      "name": "ESP_ChapterLead_Gobi",
+      "description": "Chapter Lead Gobi",
+      "role-template-references": [
+        "$XSAPPNAME.ChapterLeadGobi"
+      ]
+    },
+    {
+      "name": "ESP_ChapterLead_Damo",
+      "description": "Chapter Lead Damo",
+      "role-template-references": [
+        "$XSAPPNAME.ChapterLeadDamo"
+      ]
+    },
+    {
+      "name": "ESP_ChapterLead_Balaji",
+      "description": "Chapter Lead Balaji",
+      "role-template-references": [
+        "$XSAPPNAME.ChapterLeadBalaji"
+      ]
+    },
+    {
+      "name": "ESP_ChapterLead_Jyothsna",
+      "description": "Chapter Lead Jyothsna",
+      "role-template-references": [
+        "$XSAPPNAME.ChapterLeadJyothsna"
+      ]
+    },
+    {
+      "name": "ESP_ChapterLead_Sasi",
+      "description": "Chapter Lead Sasi",
+      "role-template-references": [
+        "$XSAPPNAME.ChapterLeadSasi"
+      ]
+    }
+  ]
+}
